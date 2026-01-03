@@ -1,0 +1,17 @@
+{
+  "name": "willowlodge-site",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-12-12",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": ".open-next/assets"
+  },
+  
+  "r2_buckets": [
+    {
+      "binding": "NEXT_INC_CACHE_R2_BUCKET",
+      "bucket_name": "willowlodge-inc-cache"
+    }
+  ]
+}
