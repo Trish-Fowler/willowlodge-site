@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ScrollScaleImage from "@/components/ScrollScaleImage";
 import {
   Car,
   Utensils,
@@ -32,8 +33,11 @@ const AMENITIES = [
 export default function Home() {
   return (
     <main>
-      {/* HERO (video-ready later; image now) */}
-      <section id="wl-hero" className="relative -mt-[var(--wl-header-h)] h-screen min-h-[560px]">
+      {/* HERO */}
+      <section
+        id="wl-hero"
+        className="relative -mt-[var(--wl-header-h)] h-screen min-h-[560px]"
+      >
         <Image
           src="/main-image.jpg"
           alt="Willow Lodge"
@@ -42,60 +46,76 @@ export default function Home() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/28 via-black/10 to-black/18" />
-        <div className="relative mx-auto flex h-full max-w-6xl items-end px-4 pb-12">
-        </div>
-      </section> 
+        <div className="relative mx-auto flex h-full max-w-6xl items-end px-4 pb-12" />
+      </section>
 
-      {/* Section 2: Book Direct */}
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="grid gap-10 md:grid-cols-[2fr_1fr] md:items-center">
-          <div>
-            <h2 className="wl-heading text-5xl leading-none text-[var(--wl-green)]">
-              Book Direct for Best Service and Value
-            </h2>
-            <ul className="mt-6 space-y-2 wl-ui text-md font-semibold text-black/80 justified preserve-whitespace">
-              <li>Best Rate  |  Real-Time Availability  |  Personalized Experience</li>
-
-            </ul>
+      {/* --- Wrap Sections 2 & 3 so we can place the diagonal middle image --- */}
+      <div className="relative pt-20 md:pt-28">
+        {/* Diagonal middle image (landscape) */}
+        <div className="pointer-events-none absolute left-1/2 top-[40%] z-20 hidden -translate-x-1/2 -translate-y-1/2 md:block">
+          <div className="relative w-[480px] rotate-[-7deg] overflow-hidden rounded-2xl border border-black/10 bg-white/40 shadow-md">
+            <div className="relative aspect-[16/9] w-full">
+              <Image
+                src="/wine-sky.jpg"
+                alt="Wine and sky"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
+        </div>
 
-          <div className="relative mx-auto aspect-[4/3] w-full max-w-sm overflow-hidden rounded-2xl border border-black/10 bg-white/40 shadow-sm">
-            {/* Placeholder image; swap later */}
-            <Image
+        {/* Section 2: Book Direct */}
+        <section className="mx-auto max-w-6xl px-4 py-16">
+          <div className="grid gap-10 md:grid-cols-[2fr_1fr] md:items-start">
+            <div className="md:-mt-6 md:pt-4">
+              <h2 className="wl-heading text-5xl leading-none text-[var(--wl-green)]">
+                Book Direct for Best Service and Value
+              </h2>
+              <ul className="mt-6 space-y-2 wl-ui text-md font-semibold text-black/80 justified preserve-whitespace">
+                <li>Best Rate | Real-Time Availability | Personalized Experience</li>
+              </ul>
+            </div>
+
+            {/* Image 1: start larger, shrink to current */}
+            <ScrollScaleImage
               src="/book-direct.jpg"
               alt="Book direct"
-              fill
-              className="object-cover"
+              from={1.42}
+              to={1.12}
+              frameClassName="mx-auto w-full max-w-sm md:translate-y-6"
+              className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-black/10 bg-white/40 shadow-sm"
             />
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Section 3: Hammock Coast */}
-      <section className="mx-auto max-w-6xl px-4 pb-16">
-        <div className="grid gap-10 md:grid-cols-2 md:items-center">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-black/10 bg-white/40 shadow-sm md:order-1">
-            {/* Placeholder image; swap later */}
-            <Image
-              src="/hammock-coast.jpg"
-              alt="Murrells Inlet and the Hammock Coast"
-              fill
-              className="object-cover"
-            />
-          </div>
+        {/* Section 3: Hammock Coast */}
+        <section className="mx-auto max-w-6xl px-4 pb-16 md:-mt-24">
+          <div className="grid gap-10 md:grid-cols-2 md:items-center">
+            {/* Image 2: start smaller, grow to current */}
+            <div className="md:order-1 relative z-0">
+              <ScrollScaleImage
+                src="/hammock-coast.jpg"
+                alt="Murrells Inlet and the Hammock Coast"
+                from={0.90}
+                to={1.0}
+                frameClassName=""
+                className="relative h-[520px] md:h-[640px] w-full overflow-hidden rounded-2xl border border-black/10 bg-white/40 shadow-sm"
+              />
+            </div>
 
-          <div className="md:order-2">
-            <h2 className="wl-heading text-5xl leading-none text-[var(--wl-green)]">
-              Stay in the heart of Murrells Inlet
-            </h2>
-            <p className="mt-6 text-[15px] leading-7 text-black/80 preserve-whitespace justified">
-              Experience the comfort and beauty of South Carolina’s storied Hammock Coast.
-              Make Willow Lodge your coastal home base for 
-              enjoying the best of the Lowcountry.
-            </p>
+            <div className="md:order-2">
+              <h2 className="wl-heading text-5xl leading-none text-[var(--wl-green)]">
+                Stay in the heart of Murrells Inlet
+              </h2>
+              <p className="mt-6 text-[15px] leading-7 text-black/80 preserve-whitespace justified">
+                Experience the comfort and beauty of South Carolina’s storied Hammock Coast.
+                Make Willow Lodge your coastal home base for enjoying the best of the Lowcountry.
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       {/* Amenities */}
       <section className="mx-auto max-w-6xl px-4 pb-28">
