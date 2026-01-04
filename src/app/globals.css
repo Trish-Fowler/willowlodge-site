@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+/* Willow Lodge: force light UI */
+:root {
+  color-scheme: light;
+
+  /* Brand palette */
+  --wl-green: #053F3A;
+  --wl-brown: #8a5235;
+  --wl-cream: #EFEAD8;
+  --wl-ink: #000000;
+
+  /* Typography */
+  --wl-font-heading: var(--font-heading);
+  --wl-font-body: var(--font-body);
+  --wl-font-ui: var(--font-ui);
+
+  /* Layout */
+  --wl-header-h: 112px;
+  --wl-heading-color: var(--wl-green);
+  --wl-heading-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
+}
+
+
+/* Base page styling */
+html,
+body {
+  background: var(--wl-cream);
+}
+
+/* Use ONLY for page section headings to match header wordmark feel */
+.wl-page-heading {
+  font-weight: 700; /* match header's font-bold */
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.45)); /* match your Tailwind drop-shadow */
+}
+
+.wl-body {
+  background: var(--wl-cream);
+  color: var(--wl-ink);
+  font-family: var(--wl-font-body);
+}
+
+/* Utility classes (kept minimal and explicit) */
+.wl-heading {
+  font-family: var(--wl-font-heading) !important;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-shadow: var(--wl-heading-shadow);
+}
+
+.wl-ui {
+  font-family: var(--wl-font-ui);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--wl-font-heading) !important;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
